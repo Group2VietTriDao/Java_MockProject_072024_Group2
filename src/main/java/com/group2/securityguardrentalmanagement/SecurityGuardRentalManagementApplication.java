@@ -8,6 +8,7 @@ public class SecurityGuardRentalManagementApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SecurityGuardRentalManagementApplication.class, args);
+		//
 	}
 
 }
