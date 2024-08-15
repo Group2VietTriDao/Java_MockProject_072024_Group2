@@ -7,31 +7,33 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "training_catalog")
-public class TrainingCatalog {
+@Table(name = "reports")
+public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "training_catalog_id")
-    private int trainingCatalogId;
-    @Column(name = "training_catalog_name")
-    private String trainingCatalogName;
-    private String description;
-    private String duration;
-    private boolean certificate;
+    @Column(name = "report_id")
+    private int reportId;
+    private String title;
+    private String information;
+    private String status;
+    @Column(name = "file_link_report")
+    private String fileLinkReport;
     @Column(name = "created_date")
     private LocalDateTime createdDate;
     @Column(name = "updated_date")
     private LocalDateTime updatedDate;
 
-
-    @OneToMany(mappedBy = "trainingCatalog")
+    @ManyToOne
     @JsonIgnore
-    private Set<ClassTraining> classTraining = new HashSet<>();
+    @JoinColumn(name = "user_id")
+    private UserEntity userEntity;
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "contract_id")
+    private Contract contract;
 }

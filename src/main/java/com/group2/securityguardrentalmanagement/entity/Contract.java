@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,4 +40,9 @@ public class Contract {
     @ManyToOne
     @JoinColumn(name = "serviceRequest_id")
     private ServiceRequest serviceRequest;
+
+    @OneToMany(mappedBy = "contract",fetch = FetchType.LAZY)
+    private Set<Report> report = new HashSet<>();
+    @OneToMany(mappedBy = "contract",fetch = FetchType.LAZY)
+    private Set<FileEntity> fileEntity = new HashSet<>();
 }

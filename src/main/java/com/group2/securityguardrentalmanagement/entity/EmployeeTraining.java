@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,20 +20,16 @@ public class EmployeeTraining {
     @Column(name = "employee_training_id")
     private int employeeTrainingId;
     private String status;
-    private String description;
-    private String location;
     private String assess;
-    @Column(name = "start_date")
-    private LocalDateTime startDate;
-    @Column(name = "end_date")
-    private LocalDateTime endDate;
     @Column(name = "delete_at")
     private LocalDateTime deleteAt;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
+
     @ManyToOne
-    @JoinColumn(name = "trainingCatalog_id")
-    private TrainingCatalog trainingCatalog;
+    @JoinColumn(name = "class_training")
+    private ClassTraining classTraining;
+
 }

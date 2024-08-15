@@ -15,11 +15,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())) // Sử dụng CSRF Token Repository
+                .csrf(csrf -> csrf.disable())
+                // Sử dụng CSRF Token Repository
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/roles/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
+                       // .requestMatchers("/api/roles/**").hasRole("ADMIN")
+                       // .anyRequest().authenticated()
+                        .anyRequest().permitAll()
+                    )
                 .sessionManagement(sess -> sess
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 );

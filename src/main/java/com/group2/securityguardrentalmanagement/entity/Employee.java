@@ -44,4 +44,5 @@ public class Employee {
     private Set<Profile> profiles = new HashSet<>();
     @OneToMany(mappedBy = "employee",fetch = FetchType.LAZY)
     private Set<EmployeeTraining> employeeTraining = new HashSet<>();
+
 }
