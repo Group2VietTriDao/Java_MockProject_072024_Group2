@@ -1,6 +1,6 @@
 package com.group2.securityguardrentalmanagement.service;
 
-import com.group2.securityguardrentalmanagement.model.Role;
+import com.group2.securityguardrentalmanagement.entity.RoleEntity;
 import com.group2.securityguardrentalmanagement.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,18 +14,22 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
-    public List<Role> getAllRoles() {
+    // Retrieve all roles
+    public List<RoleEntity> getAllRoles() {
         return roleRepository.findAll();
     }
 
-    public Optional<Role> getRoleById(Integer id) {
+    // Retrieve a role by ID
+    public Optional<RoleEntity> getRoleById(Integer id) {
         return roleRepository.findById(id);
     }
 
-    public Role saveRole(Role role) {
+    // Save a role
+    public RoleEntity saveRole(RoleEntity role) {
         return roleRepository.save(role);
     }
 
+    // Delete a role by ID
     public void deleteRole(Integer id) {
         roleRepository.deleteById(id);
     }

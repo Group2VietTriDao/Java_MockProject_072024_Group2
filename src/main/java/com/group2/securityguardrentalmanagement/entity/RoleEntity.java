@@ -14,15 +14,17 @@ import java.util.Set;
 @Entity
 @Table(name = "Roles")
 public class RoleEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
-    private int roleId;
-    @Column(name = "role_name")
+    private Integer roleId;
+
+    @Column(name = "roleName")
     private String roleName;
+
     private String description;
 
     @OneToMany(mappedBy = "roleEntity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<UserEntity> userEntity = new HashSet<>();
-
+    private Set<UserEntity> userEntities = new HashSet<>();
 }
