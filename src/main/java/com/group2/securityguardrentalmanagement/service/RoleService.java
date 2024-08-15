@@ -14,18 +14,31 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
+<<<<<<< HEAD
+=======
+    // Retrieve all roles
+>>>>>>> 4d78c45a2805e3c67a3fd102e1f781e0813b8e6c
     public List<RoleEntity> getAllRoles() {
         return roleRepository.findAll();
     }
 
+<<<<<<< HEAD
+=======
+    // Retrieve a role by ID
+>>>>>>> 4d78c45a2805e3c67a3fd102e1f781e0813b8e6c
     public Optional<RoleEntity> getRoleById(Integer id) {
         return roleRepository.findById(id);
     }
 
+<<<<<<< HEAD
+=======
+    // Save a role
+>>>>>>> 4d78c45a2805e3c67a3fd102e1f781e0813b8e6c
     public RoleEntity saveRole(RoleEntity role) {
         return roleRepository.save(role);
     }
 
+    // Delete a role by ID
     public void deleteRole(Integer id) {
         roleRepository.deleteById(id);
     }
