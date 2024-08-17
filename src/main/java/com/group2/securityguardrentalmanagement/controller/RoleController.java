@@ -1,11 +1,7 @@
 package com.group2.securityguardrentalmanagement.controller;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 4d78c45a2805e3c67a3fd102e1f781e0813b8e6c
 import com.group2.securityguardrentalmanagement.entity.RoleEntity;
-import com.group2.securityguardrentalmanagement.service.RoleService;
+import com.group2.securityguardrentalmanagement.service.impl.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,12 +26,8 @@ public class RoleController {
     @GetMapping("/{id}")
     public ResponseEntity<RoleEntity> getRoleById(@PathVariable Integer id) {
         Optional<RoleEntity> role = roleService.getRoleById(id);
-<<<<<<< HEAD
         return role.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
-=======
-        return role.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
->>>>>>> 4d78c45a2805e3c67a3fd102e1f781e0813b8e6c
     }
 
     // Create a new role

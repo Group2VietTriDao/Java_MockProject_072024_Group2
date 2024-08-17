@@ -1,5 +1,6 @@
 package com.group2.securityguardrentalmanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,9 +32,11 @@ public class ClassTraining {
     private LocalDateTime deleteAt;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "trainingCatalog_id")
     private TrainingCatalog trainingCatalog;
 
     @OneToMany(mappedBy = "classTraining",fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<EmployeeTraining> employeeTraining = new HashSet<>();
 }

@@ -1,5 +1,7 @@
 package com.group2.securityguardrentalmanagement.service;
 
+import com.group2.securityguardrentalmanagement.dto.request.ClassTrainingRequest;
+import com.group2.securityguardrentalmanagement.dto.request.ClassTrainingUpdateRequest;
 import com.group2.securityguardrentalmanagement.entity.ClassTraining;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +10,9 @@ import java.util.Optional;
 
 @Service
 public interface ClassTrainingService {
-    public ClassTraining createClass(ClassTraining classTraining, int employeeId);
-    public ClassTraining updateClass(int id, ClassTraining classTraining, int employeeId);
+    public ClassTraining createClass(ClassTrainingRequest request);
+    public ClassTraining updateClass(int id, ClassTrainingUpdateRequest request);
     public void deleteClass(int id);
     public List<ClassTraining> getAllClass();
-    public Optional<ClassTraining> getClassbyId(int id);
+    public Optional<ClassTraining> getClassById(int id);
 }
