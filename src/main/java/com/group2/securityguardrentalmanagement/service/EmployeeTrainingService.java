@@ -8,8 +8,5 @@ import java.util.List;
 
 @Service
 public interface EmployeeTrainingService {
-    public EmployeeTraining createET(int ClassId, List<Integer> employees);
-    public EmployeeTraining updateET(int ET,int EmployeeId, int ClassId);
-    public void deleteET(int ET);
     public List<Employee> getAllEmployeeByClass(int ET);
 }

@@ -1,9 +1,15 @@
 package com.group2.securityguardrentalmanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "missions")
 public class Mission {
@@ -32,9 +38,11 @@ public class Mission {
     private LocalDateTime deleteAt;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "employee_id")
     private Employee employee;
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "contract_id")
     private Contract contract;
 }

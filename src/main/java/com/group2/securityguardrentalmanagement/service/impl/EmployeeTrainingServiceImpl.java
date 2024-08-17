@@ -16,57 +16,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 @Service
 public class EmployeeTrainingServiceImpl implements EmployeeTrainingService {
-    private ClassTrainingRepository classTrainingRepository;
     private EmployeeTrainingRepository employeeTrainingRepository;
-    private EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeTrainingServiceImpl(ClassTrainingRepository classTrainingRepository, EmployeeTrainingRepository employeeTrainingRepository, EmployeeRepository employeeRepository) {
-        this.classTrainingRepository = classTrainingRepository;
+    public EmployeeTrainingServiceImpl(EmployeeTrainingRepository employeeTrainingRepository) {
         this.employeeTrainingRepository = employeeTrainingRepository;
-        this.employeeRepository = employeeRepository;
-    }
-
-    @Override
-    @Transactional
-    public EmployeeTraining createET(int ClassId, List<Integer> employees) {
-        ClassTraining existClass = classTrainingRepository.findById(ClassId)
-                .orElseThrow(()-> new RuntimeException("not Found Class"));
-
-        EmployeeTraining employeeTraining = new EmployeeTraining();
-        employeeTraining.setClassTraining(existClass);
-        for(int id : employees){
-            Employee employee = employeeRepository.findById(id)
-                    .orElseThrow(()-> new RuntimeException("Not Found employee"));
-            employeeTraining.setEmployee(employee);
-        }
-        return employeeTrainingRepository.save(employeeTraining);
-    }
-
-    @Override
-    @Transactional
-    public EmployeeTraining updateET(int ET, int EmployeeId, int ClassId) {
-        EmployeeTraining employeeTraining = employeeTrainingRepository.findById(ET)
-                .orElseThrow(()-> new RuntimeException("Not Found ET"));
-
-        Employee employee = employeeRepository.findById(EmployeeId)
-                .orElseThrow(()-> new RuntimeException("Not Found Employee"));
-
-        ClassTraining classTraining = classTrainingRepository.findById(ClassId)
-                        .orElseThrow(()-> new RuntimeException("Not Found Class"));
-        employeeTraining.setClassTraining(classTraining);
-        employeeTraining.setEmployee(employee);
-
-        return employeeTrainingRepository.save(employeeTraining);
-    }
-
-    @Override
-    @Transactional
-    public void deleteET(int ET) {
-        EmployeeTraining employeeTraining = employeeTrainingRepository.findById(ET)
-                .orElseThrow(()-> new RuntimeException("Not Found ET"));
-
-        employeeTrainingRepository.deleteById(ET);
     }
 
     @Override
