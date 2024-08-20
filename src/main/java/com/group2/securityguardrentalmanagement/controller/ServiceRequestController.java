@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/service-request")
+@CrossOrigin(origins = "")
 public class ServiceRequestController {
     private ServiceRequestService serviceRequestService;
 
