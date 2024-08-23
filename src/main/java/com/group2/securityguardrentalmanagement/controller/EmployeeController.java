@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/staff")
+@RequestMapping("/api/staff")
 public class EmployeeController {
     private EmployeeService employeeService;
     private FileService fileService;
